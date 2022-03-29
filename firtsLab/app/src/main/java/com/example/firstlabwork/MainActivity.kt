@@ -21,30 +21,30 @@ class MainActivity : AppCompatActivity() {
         val words = this.resources.getStringArray(R.array.words).apply { shuffle() }
         var index = 0
         var currentWord = words[index]
-        var shuffeledWord = String(currentWord.toCharArray().apply { shuffle() })
-        binding.shuffledWordTextView.text = shuffeledWord
-        binding.lvl.text = index.toString()
+        var shuffle = String(currentWord.toCharArray().apply { shuffle() })
+        val lvl = binding.lvl
+        binding.t2TvWord.text = shuffle
 
-        binding.shuffledWordTextView.setOnKeyListener { _, keyCode, keyEvent ->
-            if (
-                (keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
-                (keyCode == KeyEvent.KEYCODE_ENTER)
+
+        binding.t2Input.setOnKeyListener { _, keyCode, keyEvent ->
+            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)
             ) {
-                if (binding.shuffledWordTextView.text.toString() == currentWord) {
+                if (binding.t2Input.text.toString() == currentWord) {
                     Toast.makeText(baseContext, "True!", Toast.LENGTH_SHORT).show()
-                    if (index == words.size - 1) {
-                        Toast.makeText(baseContext, "Gongratz, words ended!", Toast.LENGTH_SHORT).show()
-                        binding.shuffledWordTextView.text = ""
+                    if(index == words.size - 1) {
+                        Toast.makeText(baseContext, "You win!", Toast.LENGTH_SHORT).show()
+                        binding.t2TvWord.text = ""
 
                         val intent = Intent(this, Task1Activity::class.java)
                         startActivity(intent)
                     } else {
                         index++
+                        lvl.text = "Level " + (index+1)
                         currentWord = words[index]
-                        shuffeledWord = String(currentWord.toCharArray().apply { shuffle() })
-                        binding.shuffledWordTextView.text = shuffeledWord
+                        shuffle = String(currentWord.toCharArray().apply { shuffle() })
+                        binding.t2TvWord.text = shuffle
                     }
-                    binding.inputField.text?.clear()
+                    binding.t2Input.text?.clear()
                 } else {
                     Toast.makeText(baseContext, "False, try again!", Toast.LENGTH_SHORT).show()
                 }

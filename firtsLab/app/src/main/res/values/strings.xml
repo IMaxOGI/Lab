@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">firstLabWork</string>
     <string name="text1">С днём пива</string>
+    <string name="t2_tv_scramble">Word Scramble</string>
+    <string name="t2_tv_scrambled2">Scrambled Word</string>
+    <string name="t2_btn_submit_word">Submit Word</string>
     <string-array name="words">
         <item>cupcake</item>
         <item>donut</item>
