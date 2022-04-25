@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                 setDataAndType(it, contentResolver.getType(it))
                 putExtra(Intent.EXTRA_STREAM, it)
                 putExtra(Intent.EXTRA_EMAIL, arrayOf("hodovychenko.labs@gmail.com"))
-                putExtra(Intent.EXTRA_SUBJECT, "КПП Уи-191 Болсуновский М.К.")
+                putExtra(Intent.EXTRA_SUBJECT, "КПП Аи-194 Оганесян М. А.")
             }
             startActivity(Intent.createChooser(emailIntent, "Send with..."))
         }
