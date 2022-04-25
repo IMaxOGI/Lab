@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ONPU Second Lab</string>
+    <string name="take_picture">Take meme</string>
+    <string name="send">Send meme</string>
+</resources>
