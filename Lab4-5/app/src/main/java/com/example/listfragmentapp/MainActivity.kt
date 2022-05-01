@@ -17,9 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-
-        binding.pager.adapter = MyFragmentAdapter(this,
-        ListFragment(), SecondFragment(), ThirdFragment()
+        val list = arrayListOf(
+            ListFragment(), SecondFragment(), ThirdFragment()
+        )
+        binding.pager.adapter = MyFragmentAdapter(this, list
         )
 
         TabLayoutMediator(binding.tabLayout, binding.pager) {tab, pos ->
@@ -27,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         }.attach()
     }
 
-    class MyFragmentAdapter (activity: AppCompatActivity, first: ListFragment, second: SecondFragment, third: ThirdFragment) : FragmentStateAdapter (activity) {
-        private val list = arrayOf(
-            first, second, third
-        )
+    class MyFragmentAdapter(activity: AppCompatActivity, list: ArrayList<Fragment>) : FragmentStateAdapter (activity) {
+//        private val list = arrayOf(
+//            first, second, third
+//        )
+        private val fragmentList = list
+        override fun getItemCount(): Int = fragmentList.size
 
-        override fun getItemCount(): Int = list.size
-
-        override fun createFragment(position: Int) = list[position]
+        override fun createFragment(position: Int) = fragmentList[position]
     }
 }
